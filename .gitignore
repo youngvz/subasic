@@ -16,3 +16,6 @@ configuration.json
 
 # GoLand Project Settings
 .idea/
+
+# Project Binary
+./subasic
