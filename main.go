@@ -10,6 +10,7 @@ import (
 var router *mux.Router
 var userController = controllers.UserController{}
 var groupController = controllers.GroupController{}
+var locationController = controllers.LocationController{}
 
 func main() {
    handleRequests()
@@ -20,6 +21,7 @@ func setupRouter() {
     router.HandleFunc("/", homePage)
     setupUserMappings()
     setupGroupMappings()
+    setupLocationMappings()
 }
 
 func handleRequests() {
@@ -42,6 +44,15 @@ func setupGroupMappings(){
     router.HandleFunc("/group", groupController.UpdateGroup).Methods("PUT")
     router.HandleFunc("/group/{id}", groupController.DeleteGroup).Methods("DELETE")
 }
+
+func setupLocationMappings(){
+    router.HandleFunc("/locations", locationController.GetLocations).Methods("GET")
+    router.HandleFunc("/location", locationController.CreateLocation).Methods("POST")
+    router.HandleFunc("/location/{id}", locationController.GetLocation).Methods("GET")
+    router.HandleFunc("/location", locationController.UpdateLocation).Methods("PUT")
+    router.HandleFunc("/location/{id}", locationController.DeleteLocation).Methods("DELETE")
+}
+
 
 func homePage(w http.ResponseWriter, r *http.Request){
     fmt.Println("Endpoint Hit: homePage")
