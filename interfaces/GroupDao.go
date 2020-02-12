@@ -5,9 +5,9 @@ import (
 )
 
 type GroupDao interface {
-	Create(u *models.Group) error
+	Create(g *models.Group) error
 	GetAll() ([]models.Group, error)
-	Update(u *models.Group) error
+	Update(g *models.Group) error
 	GetById(i int)(models.Group, error)
 	Delete(i int) error
 }
